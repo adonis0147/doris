@@ -20,7 +20,14 @@
 name: BE Code Formatter
 on:
   pull_request:
+    paths:
+      - 'be/src/*'
+      - 'be/test/*'
   push:
+    paths:
+      - 'be/src/*'
+      - 'be/test/*'
+
 jobs:
   clang-format:
     name: "Clang Formatter"
