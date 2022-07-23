@@ -15,21 +15,22 @@
 # specific language governing permissions and limitations
 # under the License.
 
-name: Clang Build
+name: BE UT (Clang)
 
 on: [push, pull_request]
 
+concurrency:
+  group: ${{ github.head_ref || github.ref_name }}
+  cancel-in-progress: true
+
 jobs:
   build:
-    strategy:
-      matrix:
-        type: [build, ut]
     runs-on: ubuntu-20.04
     steps:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Run ${{ matrix.type }}
+      - name: Run UT (${{ github.head_ref || github.ref_name }})
         run: |
           export DEFAULT_DIR='/opt/doris'
           export PATH="${DEFAULT_DIR}/ldb-toolchain/bin/:${DEFAULT_DIR}/thirdparty/installed/bin/:${PATH}"
@@ -53,8 +54,4 @@ jobs:
           sudo ln -snf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
           sudo dpkg-reconfigure --frontend noninteractive tzdata
 
-          if [[ "${{ matrix.type }}" == 'build' ]]; then
-            DORIS_TOOLCHAIN=clang ./build.sh -j "$(nproc)" --be --clean
-          else
-            DORIS_TOOLCHAIN=clang ./run-be-ut.sh -j "$(nproc)" --run --clean
-          fi
+          DORIS_TOOLCHAIN=clang ./run-be-ut.sh -j "$(nproc)" --run --clean
