@@ -19,7 +19,7 @@
 name: Build Extensions
 on:
   pull_request:
-  push:
+    paths: fs_brokers/apache_hdfs_broker/*
 
 jobs:
   build-extension:
