@@ -147,6 +147,7 @@ struct GenericArrayIteratorFunctions : public ArrayIteratorFunctionsBase {
     static size_t get_byte_size(const void* item, const TypeDescriptor& type_desc) { return 0; }
     static void raw_value_write(void* item, const void* value, const TypeDescriptor& type_desc,
                                 MemPool* pool) {
+        assert(item != nullptr);
         RawValue::write(value, item, type_desc, pool);
     }
 };
