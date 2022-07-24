@@ -53,7 +53,7 @@ public class BrokerConfig extends ConfigBase {
     public static String audit_log_roll_mode = "TIME-DAY"; // TIME-DAY TIME-HOUR
                                                            // SIZE-MB-nnn
     @ConfField
-    public static int audit_log_roll_num = 10; // the config doesn't work if
+    public static int audit_log_roll_num = 20; // the config doesn't work if
                                                // rollmode is TIME-*
     // verbose modules. VERBOSE level is implemented by log4j DEBUG level.
     @ConfField
