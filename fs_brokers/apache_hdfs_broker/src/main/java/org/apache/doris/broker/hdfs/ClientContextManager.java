@@ -231,6 +231,7 @@ public class ClientContextManager {
         }
         
         public void updateLastPingTime() {
+            System.out.println("update");
             this.lastPingTimestamp = System.currentTimeMillis();
             // Should we also update the underline filesystem? maybe it is time cost
             for (BrokerInputStream brokerInputStream : inputStreams.values()) {
