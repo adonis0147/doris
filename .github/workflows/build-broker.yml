@@ -19,8 +19,6 @@
 name: Build Broker
 on:
   pull_request:
-    paths:
-      - 'fs_brokers/*'
 
 concurrency:
   group: ${{ github.head_ref || github.ref_name }}
