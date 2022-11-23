@@ -19,15 +19,16 @@ name: BE UT (macOS)
 
 on:
   pull_request:
-
-concurrency:
-  group: ${{ github.ref }} (BE UT macOS)
-  cancel-in-progress: true
+  push:
 
 jobs:
   run-ut:
     name: BE UT (macOS)
+    if: github.event_name == 'pull_request'
     runs-on: macos-12
+    concurrency:
+      group: ${{ github.ref }} (BE UT macOS)
+      cancel-in-progress: true
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -53,7 +54,7 @@ jobs:
               - 'gensrc/thrift/**'
 
       - name: Run UT ${{ github.ref }}
-        if: ${{ steps.filter.outputs.be_changes == 'true' }}
+        if: steps.filter.outputs.be_changes == 'true'
         run: |
           cellars=(
             'automake'
@@ -86,6 +87,21 @@ jobs:
 
           ./run-be-ut.sh --run -j "$(nproc)" --clean
 
-      - name: Skip UT ${{ github.ref }}
-        if: ${{ steps.filter.outputs.be_changes == 'false' }}
-        run: echo 'No need to run.'
+  save-cache:
+    name: Save Cache
+    if: github.event_name == 'push'
+    runs-on: macos-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          persist-credentials: false
+          submodules: recursive
+
+      - name: Ccache ${{ github.ref }}
+        uses: ./.github/actions/ccache-action
+        with:
+          key: BE-UT-macOS
+          max-size: "2G"
+          restore-keys: BE-UT-macOS-
+
