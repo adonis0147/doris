@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# shellcheck disable=2263
 
 # Licensed to the Apache Software Foundation (ASF) under one
 # or more contributor license agreements.  See the NOTICE file
@@ -34,12 +35,19 @@ if [[ -n "${OSTYPE}" ]]; then
 fi
 
 if [[ "$(uname -s)" == 'Darwin' ]]; then
+    if [[ -f "${DORIS_HOME}/custom_env.sh" ]]; then
+        # shellcheck disable=1091
+        . "${DORIS_HOME}/custom_env.sh"
+    fi
+
     if ! command -v brew &>/dev/null; then
         echo "Error: Homebrew is missing. Please install it first due to we use Homebrew to manage the tools which are needed to build the project."
         exit 1
     fi
 
     cat >"${DORIS_HOME}/custom_env_mac.sh" <<EOF
+#!/usr/bin/env bash
+
 # This file is generated automatically. PLEASE DO NOT MODIFY IT.
 
 HOMEBREW_REPO_PREFIX="$(brew --prefix)"
@@ -61,11 +69,22 @@ CELLARS=(
     wget
     pcre
     maven
+    node
+    npm/libexec
 )
+EXPORT_CELLARS=''
 for cellar in "\${CELLARS[@]}"; do
     EXPORT_CELLARS="\${HOMEBREW_REPO_PREFIX}/opt/\${cellar}/bin:\${EXPORT_CELLARS}"
 done
-export PATH="\${EXPORT_CELLARS}:/usr/bin:\${PATH}"
+
+PATH="\${EXPORT_CELLARS}"
+while read -r line; do
+    PATH="\${PATH}:\${line}"
+done </etc/paths
+export PATH
+
+shopt -s expand_aliases
+alias brew="$(brew --prefix)/bin/brew"
 
 export DORIS_BUILD_PYTHON_VERSION=python3
 EOF
