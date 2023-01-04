@@ -157,6 +157,11 @@ else
     exit 1
 fi
 
+if [[ -n "${ARCH}" ]] && [[ "$(uname -s)" == 'Darwin' ]]; then
+    export CC="${CC} -arch ${ARCH}"
+    export CXX="${CXX} -arch ${ARCH}"
+fi
+
 if [[ -z "${DORIS_BIN_UTILS}" ]]; then
     export DORIS_BIN_UTILS='/usr/bin/'
 fi
