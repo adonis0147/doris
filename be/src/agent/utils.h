@@ -17,12 +17,14 @@
 
 #pragma once
 
-#include <gen_cpp/FrontendService.h>
+#include <butil/macros.h>
+#include <gen_cpp/FrontendService_types.h>
 #include <gen_cpp/HeartbeatService_types.h>
 #include <gen_cpp/MasterService_types.h>
+#include <map>
+#include <string>
 
 #include "common/status.h"
-#include "gutil/macros.h"
 
 namespace doris {
 

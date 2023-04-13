@@ -17,13 +17,13 @@
 
 #pragma once
 
+#include <gen_cpp/AgentService_types.h>
+
 #include <map>
-#include <mutex>
 #include <shared_mutex>
-#include <thread>
+#include <vector>
 
 #include "agent/topic_listener.h"
-#include "gen_cpp/AgentService_types.h"
 
 namespace doris {
 

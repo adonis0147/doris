@@ -17,15 +17,29 @@
 
 #include "agent/utils.h"
 
+#include <gen_cpp/FrontendService_types.h>
+#include <gen_cpp/HeartbeatService_types.h>
+#include <gen_cpp/MasterService_types.h>
+#include <glog/logging.h>
 #include <rapidjson/document.h>
 #include <rapidjson/rapidjson.h>
 #include <rapidjson/stringbuffer.h>
 #include <rapidjson/writer.h>
+#include <stdint.h>
+#include <stdio.h>
+#include <string.h>
+#include <sys/errno.h>
+#include <sys/wait.h>
+#include <thrift/Thrift.h>
+#include <thrift/transport/TTransportException.h>
 
-#include <cstdio>
 #include <fstream>
+#include <memory>
+#include <ostream>
 #include <sstream>
+#include <string>
 
+#include "common/config.h"
 #include "common/status.h"
 #include "runtime/client_cache.h"
 

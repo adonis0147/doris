@@ -17,11 +17,11 @@
 
 #pragma once
 
-#include <string>
+#include <gen_cpp/AgentService_types.h>
+#include <gen_cpp/HeartbeatService_types.h>
+#include <stdint.h>
 
 #include "agent/topic_listener.h"
-#include "gen_cpp/AgentService_types.h"
-#include "gen_cpp/HeartbeatService_types.h"
 #include "runtime/exec_env.h"
 
 namespace doris {

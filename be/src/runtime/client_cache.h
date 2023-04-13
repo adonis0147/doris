@@ -17,6 +17,10 @@
 
 #pragma once
 
+#include <gen_cpp/BackendService.h>
+#include <gen_cpp/FrontendService.h>
+#include <gen_cpp/TPaloBrokerService.h>
+
 #include <list>
 #include <mutex>
 #include <string>
@@ -283,13 +287,10 @@ private:
 
 // Doris backend client cache, used by a backend to send requests
 // to any other backend.
-class BackendServiceClient;
 using BackendServiceClientCache = ClientCache<BackendServiceClient>;
 using BackendServiceConnection = ClientConnection<BackendServiceClient>;
-class FrontendServiceClient;
 using FrontendServiceClientCache = ClientCache<FrontendServiceClient>;
 using FrontendServiceConnection = ClientConnection<FrontendServiceClient>;
-class TPaloBrokerServiceClient;
 using BrokerServiceClientCache = ClientCache<TPaloBrokerServiceClient>;
 using BrokerServiceConnection = ClientConnection<TPaloBrokerServiceClient>;
 
