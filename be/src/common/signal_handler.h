@@ -33,14 +33,20 @@
 
 #pragma once
 
+#include <butil/macros.h>
+#include <gen_cpp/version.h>
 #include <glog/logging.h>
-#include <gutil/macros.h>
+#include <pthread.h>
+#include <signal.h>
+#include <stddef.h>
+#include <stdint.h>
+#include <string.h>
+#include <time.h>
+#include <unistd.h>
 
-#include <boost/stacktrace.hpp>
-#include <csignal>
-#include <ctime>
+#include <boost/stacktrace/stacktrace.hpp>
 
-#include "gen_cpp/version.h"
+#include "gutil/integral_types.h"
 #ifdef HAVE_UCONTEXT_H
 #include <ucontext.h>
 #endif

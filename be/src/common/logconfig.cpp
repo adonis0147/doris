@@ -15,14 +15,19 @@
 // specific language governing permissions and limitations
 // under the License.
 
+#include <ctype.h>
+#include <errno.h>
 #include <glog/logging.h>
 #include <glog/vlog_is_on.h>
+#include <stdint.h>
+#include <stdlib.h>
+#include <string.h>
 
-#include <cerrno>
-#include <cstdlib>
-#include <cstring>
 #include <iostream>
 #include <mutex>
+#include <ostream>
+#include <string>
+#include <vector>
 
 #include "common/config.h"
 #include "common/logging.h"

@@ -17,6 +17,17 @@
 
 #pragma once
 
+#include <fmt/core.h>
+#include <gen_cpp/Status_types.h>
+#include <stdint.h>
+
+#include <exception>
+#include <memory>
+#include <ostream>
+#include <sstream>
+#include <string>
+#include <string_view>
+
 #include "common/status.h"
 
 namespace doris {

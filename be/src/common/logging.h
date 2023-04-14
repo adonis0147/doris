@@ -21,6 +21,11 @@
 // been defined.  undef it first to avoid warnings.
 // glog MUST be included before gflags.  Instead of including them,
 // our files should include this file instead.
+#include <gen_cpp/Types_types.h>
+#include <gen_cpp/types.pb.h>
+
+#include <ostream>
+#include <string_view>
 #undef _XOPEN_SOURCE
 // This is including a glog internal file.  We want this to expose the
 // function to get the stack trace.
@@ -56,7 +61,7 @@
     DCHECK(a == b) << "[ " #a " = " << static_cast<int>(a) << " , " #b " = " \
                    << static_cast<int>(b) << " ]"
 
-#include <fmt/format.h>
+#include <fmt/core.h>
 
 #include "util/uid_util.h"
 

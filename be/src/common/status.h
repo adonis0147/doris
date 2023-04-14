@@ -4,15 +4,18 @@
 
 #pragma once
 
-#include <fmt/format.h>
+#include <fmt/core.h>
+#include <gen_cpp/Status_types.h> // for TStatus
 #include <glog/logging.h>
+#include <stdint.h>
 
-#include <iostream>
+#include <memory>
+#include <ostream>
+#include <sstream>
 #include <string>
 #include <string_view>
 
 #include "common/compiler_util.h"
-#include "gen_cpp/Status_types.h" // for TStatus
 #ifdef ENABLE_STACKTRACE
 #include "util/stack_util.h"
 #endif

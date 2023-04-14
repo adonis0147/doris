@@ -17,6 +17,9 @@
 
 #include "common/exception.h"
 
+#include <memory>
+#include <string_view>
+
 #include "util/stack_util.h"
 namespace doris {
 

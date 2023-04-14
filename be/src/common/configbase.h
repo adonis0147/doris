@@ -17,11 +17,11 @@
 
 #pragma once
 
-#include <cstdint>
 #include <functional>
 #include <map>
 #include <mutex>
 #include <string>
+#include <utility>
 #include <vector>
 
 namespace doris {
