@@ -17,24 +17,41 @@
 
 #include "agent/task_worker_pool.h"
 
+#include <butil/macros.h>
+#include <fmt/core.h>
 #include <gen_cpp/AgentService_types.h>
-#include <pthread.h>
-#include <sys/stat.h>
+#include <gen_cpp/MasterService_types.h>
+#include <gen_cpp/Status_types.h>
+#include <gen_cpp/Types_types.h>
+#include <glog/logging.h>
+#include <stdint.h>
+#include <time.h>
+#include <unistd.h>
 
-#include <boost/lexical_cast.hpp>
+#include <algorithm>
+#include <atomic>
 #include <chrono>
-#include <csignal>
-#include <ctime>
+#include <deque>
+#include <functional>
+#include <map>
 #include <memory>
-#include <sstream>
+#include <mutex>
+#include <ostream>
+#include <set>
+#include <shared_mutex>
 #include <string>
+#include <thread>
+#include <vector>
 
 #include "agent/utils.h"
+#include "common/config.h"
 #include "common/logging.h"
 #include "common/status.h"
-#include "gen_cpp/Types_types.h"
+#include "gutil/ref_counted.h"
 #include "gutil/strings/substitute.h"
+#include "io/fs/file_system.h"
 #include "io/fs/local_file_system.h"
+#include "io/fs/path.h"
 #include "io/fs/s3_file_system.h"
 #include "olap/data_dir.h"
 #include "olap/olap_common.h"
@@ -52,11 +69,15 @@
 #include "runtime/exec_env.h"
 #include "runtime/snapshot_loader.h"
 #include "service/backend_options.h"
+#include "util/countdown_latch.h"
 #include "util/doris_metrics.h"
+#include "util/metrics.h"
 #include "util/random.h"
+#include "util/s3_util.h"
 #include "util/scoped_cleanup.h"
 #include "util/stopwatch.hpp"
 #include "util/threadpool.h"
+#include "util/time.h"
 #include "util/trace.h"
 
 namespace doris {

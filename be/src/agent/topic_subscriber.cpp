@@ -17,6 +17,15 @@
 
 #include "agent/topic_subscriber.h"
 
+#include <gen_cpp/AgentService_types.h>
+
+#include <map>
+#include <mutex>
+#include <shared_mutex>
+#include <vector>
+
+#include "agent/topic_listener.h"
+
 namespace doris {
 
 TopicSubscriber::TopicSubscriber() {}

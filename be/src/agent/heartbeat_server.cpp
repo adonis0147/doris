@@ -17,12 +17,20 @@
 
 #include "agent/heartbeat_server.h"
 
+#include <gen_cpp/HeartbeatService.h>
+#include <gen_cpp/HeartbeatService_types.h>
+#include <glog/logging.h>
+#include <stdint.h>
 #include <thrift/TProcessor.h>
 
+#include <memory>
+#include <mutex>
+#include <sstream>
+
+#include "common/config.h"
 #include "common/status.h"
-#include "gen_cpp/HeartbeatService.h"
-#include "gen_cpp/Status_types.h"
 #include "olap/storage_engine.h"
+#include "runtime/exec_env.h"
 #include "runtime/heartbeat_flags.h"
 #include "service/backend_options.h"
 #include "util/debug_util.h"

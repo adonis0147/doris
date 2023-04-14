@@ -17,18 +17,27 @@
 
 #pragma once
 
+#include <butil/macros.h>
+#include <gen_cpp/AgentService_types.h>
+#include <gen_cpp/HeartbeatService_types.h>
+#include <gen_cpp/MasterService_types.h>
+#include <gen_cpp/Types_types.h>
+#include <stdint.h>
+
 #include <atomic>
+#include <condition_variable>
 #include <deque>
+#include <map>
 #include <memory>
-#include <utility>
-#include <vector>
+#include <mutex>
+#include <set>
+#include <string>
 
 #include "common/status.h"
-#include "gen_cpp/AgentService_types.h"
-#include "gen_cpp/HeartbeatService_types.h"
 #include "olap/data_dir.h"
 #include "olap/tablet.h"
 #include "util/countdown_latch.h"
+#include "util/metrics.h"
 
 namespace doris {
 

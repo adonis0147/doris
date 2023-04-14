@@ -17,7 +17,7 @@
 
 #pragma once
 
-#include <fmt/format.h>
+#include <fmt/core.h>
 #include <glog/logging.h>
 
 namespace doris {
