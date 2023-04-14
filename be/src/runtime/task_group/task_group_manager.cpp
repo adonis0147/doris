@@ -17,6 +17,13 @@
 
 #include "task_group_manager.h"
 
+#include <stdint.h>
+
+#include <memory>
+#include <shared_mutex>
+
+#include "runtime/task_group/task_group.h"
+
 namespace doris::taskgroup {
 
 TaskGroupManager::TaskGroupManager() {

@@ -17,14 +17,16 @@
 
 #pragma once
 
-#include <ctime>
+#include <stdint.h>
+
+#include <list>
 #include <memory>
 #include <mutex>
 
 #include "gutil/ref_counted.h"
 #include "runtime/routine_load/data_consumer.h"
+#include "runtime/stream_load/stream_load_context.h"
 #include "util/countdown_latch.h"
-#include "util/lru_cache.hpp"
 #include "util/thread.h"
 
 namespace doris {

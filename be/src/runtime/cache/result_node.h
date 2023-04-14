@@ -17,21 +17,12 @@
 
 #pragma once
 
-#include <sys/time.h>
-
-#include <algorithm>
-#include <cassert>
-#include <cstdio>
-#include <cstdlib>
-#include <exception>
-#include <iostream>
 #include <list>
-#include <map>
-#include <string>
+#include <shared_mutex>
+#include <unordered_map>
 
-#include "common/config.h"
 #include "gen_cpp/internal_service.pb.h"
-#include "olap/olap_define.h"
+#include "gutil/integral_types.h"
 #include "runtime/cache/cache_utils.h"
 #include "util/uid_util.h"
 

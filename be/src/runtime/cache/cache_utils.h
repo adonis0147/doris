@@ -20,21 +20,13 @@
 #include <gutil/integral_types.h>
 #include <sys/time.h>
 
-#include <algorithm>
-#include <cassert>
-#include <cstdio>
-#include <cstdlib>
-#include <exception>
-#include <iostream>
-#include <list>
-#include <map>
+#include <mutex>
 #include <shared_mutex>
-#include <thread>
 
 namespace doris {
 
-typedef std::shared_lock<std::shared_mutex> CacheReadLock;
-typedef std::unique_lock<std::shared_mutex> CacheWriteLock;
+using CacheReadLock = std::shared_lock<std::shared_mutex>;
+using CacheWriteLock = std::unique_lock<std::shared_mutex>;
 
 //#ifndef PARTITION_CACHE_DEV
 //#define PARTITION_CACHE_DEV

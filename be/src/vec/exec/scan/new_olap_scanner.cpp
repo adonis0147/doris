@@ -19,6 +19,7 @@
 
 #include "io/cache/block/block_file_cache_profile.h"
 #include "olap/storage_engine.h"
+#include "service/backend_options.h"
 #include "vec/exec/scan/new_olap_scan_node.h"
 #include "vec/olap/block_reader.h"
 

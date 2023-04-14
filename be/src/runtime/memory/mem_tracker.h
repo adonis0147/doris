@@ -19,6 +19,16 @@
 // and modified by Doris
 #pragma once
 
+#include <gen_cpp/Metrics_types.h>
+#include <stdint.h>
+
+#include <atomic>
+#include <list>
+#include <memory>
+#include <sstream>
+#include <string>
+#include <vector>
+
 #include "util/pretty_printer.h"
 #include "util/runtime_profile.h"
 

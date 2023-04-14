@@ -17,6 +17,12 @@
 
 #include "task_group.h"
 
+#include <fmt/core.h>
+#include <stdint.h>
+
+#include <string>
+
+#include "common/logging.h"
 #include "pipeline/pipeline_task.h"
 
 namespace doris {

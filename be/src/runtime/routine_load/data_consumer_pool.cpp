@@ -17,8 +17,25 @@
 
 #include "runtime/routine_load/data_consumer_pool.h"
 
+#include <gen_cpp/Types_types.h>
+#include <glog/logging.h>
+#include <stdint.h>
+#include <time.h>
+#include <wchar.h>
+
+#include <algorithm>
+#include <chrono>
+#include <iterator>
+#include <memory>
+#include <mutex>
+
 #include "common/config.h"
+#include "common/logging.h"
+#include "common/status.h"
+#include "runtime/routine_load/data_consumer.h"
 #include "runtime/routine_load/data_consumer_group.h"
+#include "runtime/stream_load/stream_load_context.h"
+#include "util/thread.h"
 
 namespace doris {
 

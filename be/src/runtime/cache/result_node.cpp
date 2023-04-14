@@ -16,7 +16,14 @@
 // under the License.
 #include "runtime/cache/result_node.h"
 
+#include <glog/logging.h>
+#include <time.h>
+
+#include <limits>
+
+#include "common/config.h"
 #include "gen_cpp/internal_service.pb.h"
+#include "olap//olap_define.h"
 #include "runtime/cache/cache_utils.h"
 
 namespace doris {
@@ -314,7 +321,9 @@ void ResultNode::clear() {
 
 void ResultNode::append(ResultNode* tail) {
     _prev = tail;
-    if (tail) tail->set_next(this);
+    if (tail) {
+        tail->set_next(this);
+    }
 }
 
 void ResultNode::unlink() {

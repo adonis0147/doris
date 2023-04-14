@@ -17,10 +17,19 @@
 
 #pragma once
 
-#include <ctime>
-#include <mutex>
-#include <unordered_map>
+#include <glog/logging.h>
+#include <stdint.h>
+#include <time.h>
 
+#include <map>
+#include <memory>
+#include <mutex>
+#include <string>
+#include <unordered_map>
+#include <vector>
+
+#include "common/logging.h"
+#include "common/status.h"
 #include "librdkafka/rdkafkacpp.h"
 #include "runtime/stream_load/stream_load_context.h"
 #include "util/blocking_queue.hpp"

@@ -18,8 +18,8 @@
 #include "vec/exec/scan/new_es_scan_node.h"
 
 #include "exec/es/es_scroll_query.h"
+#include "service/backend_options.h"
 #include "vec/exec/scan/new_es_scanner.h"
-#include "vec/utils/util.hpp"
 
 static const std::string NEW_SCAN_NODE_TYPE = "NewEsScanNode";
 

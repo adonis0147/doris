@@ -15,6 +15,10 @@
 // specific language governing permissions and limitations
 // under the License.
 
+#include <stdint.h>
+#include <stdlib.h>
+#include <sys/cdefs.h>
+
 #include "jemalloc/jemalloc.h"
 #include "runtime/thread_context.h"
 

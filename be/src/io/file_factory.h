@@ -16,10 +16,22 @@
 // under the License.
 #pragma once
 
+#include <glog/logging.h>
+#include <stdint.h>
+
+#include <map>
+#include <memory>
+#include <string>
+#include <vector>
+
+#include "common/status.h"
 #include "gen_cpp/PlanNodes_types.h"
 #include "gen_cpp/Types_types.h"
 #include "io/fs/file_reader.h"
+#include "io/fs/file_reader_options.h"
+#include "io/fs/file_reader_writer_fwd.h"
 #include "io/fs/file_writer.h"
+#include "udf/udf.h"
 
 namespace doris {
 namespace io {

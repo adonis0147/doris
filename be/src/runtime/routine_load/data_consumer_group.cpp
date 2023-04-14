@@ -16,11 +16,25 @@
 // under the License.
 #include "runtime/routine_load/data_consumer_group.h"
 
+#include <gen_cpp/PlanNodes_types.h>
+#include <glog/logging.h>
+#include <stdint.h>
+#include <stdio.h>
+
+#include <functional>
+#include <map>
+#include <memory>
+#include <mutex>
+#include <vector>
+
+#include "common/logging.h"
+#include "common/status.h"
 #include "io/fs/kafka_consumer_pipe.h"
-#include "librdkafka/rdkafka.h"
 #include "librdkafka/rdkafkacpp.h"
 #include "runtime/routine_load/data_consumer.h"
 #include "runtime/stream_load/stream_load_context.h"
+#include "util/blocking_queue.hpp"
+#include "util/stopwatch.hpp"
 
 namespace doris {
 

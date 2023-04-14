@@ -17,15 +17,31 @@
 
 #pragma once
 
+#include <butil/compiler_specific.h>
+#include <fmt/core.h>
+#include <gen_cpp/Metrics_types.h>
+#include <gen_cpp/Types_types.h>
+#include <glog/logging.h>
+#include <stdint.h>
+
 #include <atomic>
+#include <list>
+#include <memory>
+#include <sstream>
+#include <string>
+#include <unordered_map>
+#include <vector>
 
 #include "common/config.h"
+#include "common/status.h"
 #include "runtime/exec_env.h"
 #include "runtime/memory/mem_tracker.h"
-#include "service/backend_options.h"
 #include "util/mem_info.h"
 #include "util/perf_counters.h"
+#include "util/pretty_printer.h"
+#include "util/runtime_profile.h"
 #include "util/string_util.h"
+#include "util/uid_util.h"
 
 namespace doris {
 

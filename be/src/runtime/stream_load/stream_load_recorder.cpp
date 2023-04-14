@@ -17,6 +17,17 @@
 
 #include "runtime/stream_load/stream_load_recorder.h"
 
+#include <glog/logging.h>
+#include <rocksdb/iterator.h>
+#include <rocksdb/status.h>
+#include <stdint.h>
+
+#include <atomic>
+#include <map>
+#include <memory>
+#include <string>
+#include <vector>
+
 #include "common/config.h"
 #include "common/status.h"
 #include "rocksdb/db.h"

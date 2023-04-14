@@ -17,6 +17,9 @@
 
 #pragma once
 
+#include <map>
+#include <string>
+
 #include "common/status.h"
 #include "gen_cpp/PlanNodes_types.h"
 #include "io/fs/hdfs.h"

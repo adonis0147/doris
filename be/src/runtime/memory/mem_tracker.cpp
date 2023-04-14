@@ -20,11 +20,18 @@
 
 #include "runtime/memory/mem_tracker.h"
 
-#include <fmt/format.h>
+#include <fmt/core.h>
+#include <gen_cpp/Metrics_types.h>
+#include <stdint.h>
+
+#include <list>
+#include <memory>
+#include <mutex>
+#include <string>
+#include <vector>
 
 #include "runtime/thread_context.h"
-#include "util/string_util.h"
-#include "util/time.h"
+#include "util/runtime_profile.h"
 
 namespace doris {
 

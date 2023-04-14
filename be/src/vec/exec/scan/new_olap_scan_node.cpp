@@ -24,6 +24,7 @@
 #include "olap/tablet.h"
 #include "pipeline/pipeline.h"
 #include "pipeline/pipeline_fragment_context.h"
+#include "service/backend_options.h"
 #include "util/to_string.h"
 #include "vec/columns/column_const.h"
 #include "vec/exec/scan/new_olap_scanner.h"

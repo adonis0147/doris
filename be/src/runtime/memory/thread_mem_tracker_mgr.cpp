@@ -17,12 +17,15 @@
 
 #include "runtime/memory/thread_mem_tracker_mgr.h"
 
-#include <chrono>
-#include <thread>
+#include <gen_cpp/types.pb.h>
+#include <glog/logging.h>
+#include <stdint.h>
+
+#include <memory>
+#include <string>
 
 #include "runtime/exec_env.h"
 #include "runtime/fragment_mgr.h"
-#include "service/backend_options.h"
 
 namespace doris {
 

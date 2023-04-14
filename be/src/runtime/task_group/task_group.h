@@ -15,9 +15,12 @@
 // specific language governing permissions and limitations
 // under the License.
 #pragma once
-#include <queue>
+#include <stdint.h>
+#include <stdlib.h>
 
-#include "olap/olap_define.h"
+#include <memory>
+#include <queue>
+#include <string>
 
 namespace doris {
 

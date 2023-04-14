@@ -17,9 +17,10 @@
 
 #pragma once
 
+#include <stdint.h>
+
 #include <atomic>
 #include <cstddef>
-#include <cstdint>
 #include <memory>
 #include <vector>
 

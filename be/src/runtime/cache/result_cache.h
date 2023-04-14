@@ -17,20 +17,14 @@
 
 #pragma once
 
-#include <cassert>
-#include <cstdio>
-#include <cstdlib>
-#include <exception>
-#include <iostream>
-#include <list>
-#include <map>
-#include <mutex>
-#include <shared_mutex>
-#include <thread>
+#include <stdio.h>
 
-#include "common/config.h"
-#include "runtime/cache/cache_utils.h"
+#include <shared_mutex>
+#include <unordered_map>
+
+#include "gutil/integral_types.h"
 #include "runtime/cache/result_node.h"
+#include "util/uid_util.h"
 
 namespace doris {
 

@@ -17,22 +17,36 @@
 
 #include "io/file_factory.h"
 
+#include <gen_cpp/PlanNodes_types.h>
+#include <gen_cpp/Types_types.h>
+#include <stdint.h>
+
+#include <map>
+#include <memory>
+#include <string>
+#include <vector>
+
 #include "common/config.h"
 #include "common/status.h"
 #include "io/fs/broker_file_system.h"
 #include "io/fs/broker_file_writer.h"
 #include "io/fs/file_reader_options.h"
+#include "io/fs/file_reader_writer_fwd.h"
 #include "io/fs/file_system.h"
+#include "io/fs/file_writer.h"
 #include "io/fs/hdfs_file_system.h"
 #include "io/fs/hdfs_file_writer.h"
 #include "io/fs/local_file_system.h"
 #include "io/fs/s3_file_system.h"
+#include "io/hdfs_builder.h"
 #include "runtime/exec_env.h"
 #include "runtime/runtime_state.h"
 #include "runtime/stream_load/new_load_stream_mgr.h"
 #include "runtime/stream_load/stream_load_context.h"
 #include "util/runtime_profile.h"
 #include "util/s3_uri.h"
+#include "util/s3_util.h"
+#include "util/uid_util.h"
 
 namespace doris {
 io::FileCachePolicy FileFactory::get_cache_policy(RuntimeState* state) {

@@ -17,17 +17,37 @@
 
 #include "runtime/memory/mem_tracker_limiter.h"
 
-#include <fmt/format.h>
+#include <fmt/core.h>
+#include <gen_cpp/Metrics_types.h>
+#include <gen_cpp/types.pb.h>
+#include <glog/logging.h>
+#include <stdint.h>
+#include <stdlib.h>
 
-#include <boost/stacktrace.hpp>
+#include <atomic>
+#include <functional>
+#include <list>
+#include <memory>
+#include <mutex>
 #include <queue>
+#include <string>
+#include <unordered_map>
+#include <utility>
+#include <vector>
 
+#include "common/status.h"
+#include "runtime/exec_env.h"
 #include "runtime/fragment_mgr.h"
 #include "runtime/load_channel_mgr.h"
+#include "runtime/memory/mem_tracker.h"
 #include "runtime/runtime_state.h"
 #include "runtime/thread_context.h"
-#include "util/pretty_printer.h"
+#include "service/backend_options.h"
+#include "util/mem_info.h"
+#include "util/perf_counters.h"
+#include "util/runtime_profile.h"
 #include "util/stack_util.h"
+#include "util/string_util.h"
 
 namespace doris {
 

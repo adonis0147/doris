@@ -17,18 +17,35 @@
 
 #include "runtime/routine_load/data_consumer.h"
 
+#include <gen_cpp/Types_types.h>
+#include <glog/logging.h>
+#include <librdkafka/rdkafkacpp.h>
+#include <stdint.h>
+#include <time.h>
+
 #include <algorithm>
-#include <functional>
+#include <chrono>
+#include <map>
+#include <memory>
+#include <mutex>
+#include <sstream>
 #include <string>
+#include <thread>
+#include <unordered_map>
 #include <vector>
 
+#include "common/config.h"
+#include "common/logging.h"
 #include "common/status.h"
 #include "gen_cpp/internal_service.pb.h"
 #include "gutil/strings/split.h"
 #include "runtime/small_file_mgr.h"
+#include "runtime/stream_load/stream_load_context.h"
 #include "service/backend_options.h"
+#include "util/blocking_queue.hpp"
 #include "util/defer_op.h"
 #include "util/stopwatch.hpp"
+#include "util/string_util.h"
 #include "util/uid_util.h"
 
 namespace doris {

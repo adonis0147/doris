@@ -17,12 +17,17 @@
 
 #pragma once
 
-#include <rapidjson/prettywriter.h>
+#include <gen_cpp/PlanNodes_types.h>
+#include <gen_cpp/Types_types.h>
+#include <stdint.h>
+#include <stdlib.h>
 
 #include <future>
-#include <sstream>
+#include <map>
+#include <memory>
+#include <string>
+#include <vector>
 
-#include "common/logging.h"
 #include "common/status.h"
 #include "common/utils.h"
 #include "gen_cpp/BackendService_types.h"
@@ -32,8 +37,6 @@
 #include "runtime/message_body_sink.h"
 #include "runtime/stream_load/new_load_stream_mgr.h"
 #include "runtime/stream_load/stream_load_executor.h"
-#include "service/backend_options.h"
-#include "util/string_util.h"
 #include "util/time.h"
 #include "util/uid_util.h"
 

@@ -17,9 +17,20 @@
 
 #pragma once
 
+#include <librdkafka/rdkafkacpp.h>
+#include <stdint.h>
+
+#include <functional>
+#include <memory>
+#include <mutex>
+#include <vector>
+
+#include "common/status.h"
 #include "runtime/routine_load/data_consumer.h"
+#include "runtime/stream_load/stream_load_context.h"
 #include "util/blocking_queue.hpp"
 #include "util/priority_thread_pool.hpp"
+#include "util/uid_util.h"
 
 namespace doris {
 
