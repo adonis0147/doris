@@ -17,14 +17,27 @@
 
 #pragma once
 
+#include <glog/logging.h>
 #include <parallel_hashmap/phmap.h>
+#include <stdint.h>
+#include <stdlib.h>
+
+#include <array>
+#include <cstddef>
+#include <iterator>
+#include <new>
+#include <string>
 
 #include "common/object_pool.h"
-#include "runtime/decimalv2_value.h"
+#include "gutil/integral_types.h"
 #include "runtime/define_primitive_type.h"
 #include "runtime/primitive_type.h"
+#include "vec/columns/column.h"
 #include "vec/columns/column_nullable.h"
 #include "vec/columns/column_string.h"
+#include "vec/columns/column_vector.h"
+#include "vec/columns/columns_number.h"
+#include "vec/common/assert_cast.h"
 #include "vec/common/string_ref.h"
 
 namespace doris {

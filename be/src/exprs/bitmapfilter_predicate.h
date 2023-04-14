@@ -17,8 +17,14 @@
 
 #pragma once
 
-#include <algorithm>
+#include <stdint.h>
+#include <stdlib.h>
 
+#include <algorithm>
+#include <memory>
+#include <vector>
+
+#include "common/status.h"
 #include "gutil/integral_types.h"
 #include "runtime/define_primitive_type.h"
 #include "runtime/primitive_type.h"

@@ -17,23 +17,46 @@
 
 #include "runtime_filter.h"
 
-#include <memory>
+#include <fmt/core.h>
+#include <gen_cpp/Exprs_types.h>
+#include <gen_cpp/Opcodes_types.h>
+#include <gen_cpp/PaloInternalService_types.h>
+#include <gen_cpp/PlanNodes_types.h>
+#include <gen_cpp/Types_types.h>
+#include <glog/logging.h>
+#include <stdint.h>
+#include <stdlib.h>
 
+#include <atomic>
+#include <chrono>
+#include <memory>
+#include <mutex>
+#include <sstream>
+#include <string>
+#include <vector>
+
+#include "common/logging.h"
 #include "common/object_pool.h"
 #include "common/status.h"
 #include "exprs/bitmapfilter_predicate.h"
 #include "exprs/create_predicate_function.h"
 #include "exprs/hybrid_set.h"
-#include "exprs/minmax_predicate.h"
 #include "gen_cpp/internal_service.pb.h"
+#include "gutil/strings/substitute.h"
+#include "olap/olap_common.h"
 #include "runtime/define_primitive_type.h"
 #include "runtime/large_int_value.h"
 #include "runtime/primitive_type.h"
 #include "runtime/runtime_filter_mgr.h"
+#include "runtime/types.h"
+#include "util/bitmap_value.h"
 #include "util/runtime_profile.h"
 #include "util/string_parser.hpp"
+#include "util/time.h"
+#include "util/uid_util.h"
 #include "vec/columns/column.h"
 #include "vec/columns/column_complex.h"
+#include "vec/common/assert_cast.h"
 #include "vec/exprs/vbitmap_predicate.h"
 #include "vec/exprs/vbloom_predicate.h"
 #include "vec/exprs/vdirect_in_predicate.h"
@@ -41,6 +64,7 @@
 #include "vec/exprs/vliteral.h"
 #include "vec/exprs/vruntimefilter_wrapper.h"
 #include "vec/runtime/shared_hash_table_controller.h"
+#include "vec/runtime/vdatetime_value.h"
 
 namespace doris {
 

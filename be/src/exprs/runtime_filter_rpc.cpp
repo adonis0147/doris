@@ -15,7 +15,16 @@
 // specific language governing permissions and limitations
 // under the License.
 
+#include <brpc/controller.h>
+#include <fmt/core.h>
+#include <gen_cpp/Types_types.h>
+#include <glog/logging.h>
+
+#include <memory>
+#include <string>
+
 #include "common/config.h"
+#include "common/logging.h"
 #include "common/status.h"
 #include "exprs/runtime_filter.h"
 #include "runtime/exec_env.h"

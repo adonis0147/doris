@@ -17,12 +17,28 @@
 
 #pragma once
 
+#include <fmt/core.h>
+#include <gen_cpp/PlanNodes_types.h>
+#include <glog/logging.h>
+#include <stdint.h>
+
+#include <list>
+#include <map>
+#include <string>
+#include <unordered_map>
+#include <vector>
+
+#include "common/logging.h"
+#include "common/status.h"
 #include "exprs/runtime_filter.h"
 #include "runtime/runtime_filter_mgr.h"
 #include "runtime/runtime_state.h"
+#include "util/uid_util.h"
+#include "vec/columns/column.h"
 #include "vec/columns/column_nullable.h"
 #include "vec/columns/columns_number.h"
 #include "vec/common/assert_cast.h"
+#include "vec/core/block.h"
 #include "vec/runtime/shared_hash_table_controller.h"
 
 namespace doris {

@@ -17,12 +17,15 @@
 
 #pragma once
 
+#include <stdint.h>
+
 #include <unordered_map>
+#include <utility>
 
 #include "common/object_pool.h"
 #include "exprs/create_predicate_function.h"
 #include "exprs/hybrid_set.h"
-#include "runtime/primitive_type.h"
+#include "runtime/define_primitive_type.h"
 
 namespace doris {
 

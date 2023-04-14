@@ -20,13 +20,18 @@
 
 #pragma once
 
+#include <stdint.h>
+#include <stdlib.h>
+
+#include <limits>
+
+#include "common/compiler_util.h"
+#include "gutil/port.h"
 #ifdef __AVX2__
 #include <immintrin.h>
 
-#include "gutil/macros.h"
 #endif
 #include "common/status.h"
-#include "fmt/format.h"
 #include "util/hash_util.hpp"
 #include "util/slice.h"
 

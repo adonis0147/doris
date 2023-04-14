@@ -17,13 +17,26 @@
 
 #pragma once
 
+#include <glog/logging.h>
+#include <stdint.h>
+#include <string.h>
+
+#include <memory>
+#include <type_traits>
+
+#include "exprs/bitmapfilter_predicate.h"
+#include "exprs/bloom_filter_func.h"
 #include "exprs/hybrid_set.h"
 #include "exprs/minmax_predicate.h"
 #include "olap/bitmap_filter_predicate.h"
 #include "olap/bloom_filter_predicate.h"
 #include "olap/column_predicate.h"
 #include "olap/in_list_predicate.h"
+#include "olap/olap_common.h"
+#include "olap/tablet_schema.h"
 #include "runtime/define_primitive_type.h"
+#include "runtime/primitive_type.h"
+#include "vec/common/string_ref.h"
 
 namespace doris {
 

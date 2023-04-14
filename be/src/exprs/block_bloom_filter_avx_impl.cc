@@ -18,12 +18,14 @@
 // https://github.com/apache/kudu/blob/master/src/kudu/util/block_bloom_filter_avx2.cc
 // and modified by Doris
 
+#include <glog/logging.h>
+#include <stdint.h>
+#include <stdlib.h>
 #ifdef __AVX2__
 
 #include <immintrin.h>
 
 #include "exprs/block_bloom_filter.hpp"
-#include "gutil/macros.h"
 
 namespace doris {
 

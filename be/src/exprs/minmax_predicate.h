@@ -17,8 +17,12 @@
 
 #pragma once
 
+#include <string>
+
 #include "common/object_pool.h"
+#include "common/status.h"
 #include "runtime/type_limit.h"
+#include "vec/common/string_ref.h"
 
 namespace doris {
 // only used in Runtime Filter

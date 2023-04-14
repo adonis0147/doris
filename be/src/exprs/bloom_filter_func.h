@@ -17,8 +17,30 @@
 
 #pragma once
 
+#include <glog/logging.h>
+#include <math.h>
+#include <stdint.h>
+#include <stdlib.h>
+#include <string.h>
+
+#include <memory>
+#include <mutex>
+
+#include "common/status.h"
 #include "exprs/block_bloom_filter.hpp"
 #include "exprs/runtime_filter.h"
+#include "gutil/integral_types.h"
+#include "olap/decimal12.h"
+#include "olap/rowset/segment_v2/bloom_filter.h"
+#include "olap/uint24.h"
+#include "runtime/datetime_value.h"
+#include "runtime/decimalv2_value.h"
+#include "runtime/define_primitive_type.h"
+#include "runtime/primitive_type.h"
+#include "util/hash_util.hpp"
+#include "util/slice.h"
+#include "vec/common/string_ref.h"
+#include "vec/runtime/vdatetime_value.h"
 
 namespace doris {
 

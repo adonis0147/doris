@@ -22,9 +22,10 @@
 #include <simdjson.h>
 
 #include <sstream>
+#include <string>
+#include <vector>
 
 #include "common/status.h"
-#include "udf/udf.h"
 
 namespace doris {
 

@@ -20,19 +20,17 @@
 
 #include "exprs/math_functions.h"
 
-#include <stdlib.h>
+#include <opentelemetry/common/threadlocal.h>
+#include <stdint.h>
+#include <string.h>
 
 #include <cmath>
-#include <iomanip>
-#include <random>
-#include <sstream>
+#include <limits>
 #include <string_view>
 
-#include "common/compiler_util.h"
-#include "runtime/decimalv2_value.h"
-#include "runtime/large_int_value.h"
-#include "util/simd/vstring_function.h"
+#include "udf/udf.h"
 #include "util/string_parser.hpp"
+#include "vec/common/string_ref.h"
 
 namespace doris {
 
