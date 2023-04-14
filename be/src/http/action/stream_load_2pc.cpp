@@ -17,18 +17,22 @@
 
 #include "http/action/stream_load_2pc.h"
 
+#include <glog/logging.h>
 #include <rapidjson/prettywriter.h>
 #include <rapidjson/stringbuffer.h>
 
+#include <exception>
+#include <memory>
+#include <string>
+
 #include "common/status.h"
 #include "http/http_channel.h"
-#include "http/http_headers.h"
+#include "http/http_common.h"
 #include "http/http_request.h"
 #include "http/http_status.h"
 #include "http/utils.h"
 #include "runtime/stream_load/stream_load_context.h"
 #include "runtime/stream_load/stream_load_executor.h"
-#include "util/json_util.h"
 
 namespace doris {
 

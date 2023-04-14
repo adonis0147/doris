@@ -17,22 +17,29 @@
 
 #include "http/web_page_handler.h"
 
-#include <functional>
+#include <glog/logging.h>
+#include <stdlib.h>
 
-#include "common/config.h"
+#include <functional>
+#include <mutex>
+#include <sstream>
+#include <string>
+
+#include "common/logging.h"
 #include "gutil/stl_util.h"
 #include "gutil/strings/substitute.h"
 #include "http/ev_http_server.h"
 #include "http/http_channel.h"
 #include "http/http_headers.h"
+#include "http/http_method.h"
 #include "http/http_request.h"
-#include "http/http_response.h"
 #include "http/http_status.h"
 #include "http/utils.h"
 #include "io/fs/local_file_system.h"
 #include "util/cpu_info.h"
 #include "util/debug_util.h"
 #include "util/disk_info.h"
+#include "util/easy_json.h"
 #include "util/mem_info.h"
 #include "util/mustache/mustache.h"
 

@@ -17,9 +17,11 @@
 
 #pragma once
 
+#include <event2/http.h>
+
+#include <memory>
 #include <mutex>
 #include <string>
-#include <thread>
 #include <vector>
 
 #include "common/status.h"

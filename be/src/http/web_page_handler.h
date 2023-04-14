@@ -22,7 +22,6 @@
 #include <mutex>
 #include <sstream>
 #include <string>
-#include <vector>
 
 #include "http/http_handler.h"
 #include "util/easy_json.h"

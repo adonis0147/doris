@@ -20,6 +20,7 @@
 #include "common/status.h"
 #include "http/http_handler.h"
 #include "http/http_request.h"
+#include "olap/olap_common.h"
 #include "olap/tablet.h"
 
 namespace doris {

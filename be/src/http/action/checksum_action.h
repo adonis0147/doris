@@ -17,7 +17,7 @@
 
 #pragma once
 
-#include <cstdint>
+#include <stdint.h>
 
 #include "http/http_handler.h"
 

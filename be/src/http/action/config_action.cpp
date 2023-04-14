@@ -17,21 +17,21 @@
 
 #include "http/action/config_action.h"
 
+#include <glog/logging.h>
 #include <rapidjson/document.h>
 #include <rapidjson/prettywriter.h>
-#include <rapidjson/rapidjson.h>
 #include <rapidjson/stringbuffer.h>
+#include <rapidjson/writer.h>
 
 #include <string>
+#include <vector>
 
 #include "common/configbase.h"
-#include "common/logging.h"
 #include "common/status.h"
 #include "gutil/strings/substitute.h"
 #include "http/http_channel.h"
 #include "http/http_headers.h"
 #include "http/http_request.h"
-#include "http/http_response.h"
 #include "http/http_status.h"
 
 namespace doris {

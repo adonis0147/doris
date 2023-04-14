@@ -17,7 +17,20 @@
 
 #include "http/http_client.h"
 
+#include <curl/curl.h>
+#include <curl/easy.h>
+#include <glog/logging.h>
+#include <stdio.h>
+#include <sys/types.h>
+#include <unistd.h>
+
+#include <functional>
+#include <memory>
+#include <string>
+
 #include "common/config.h"
+#include "common/status.h"
+#include "http/http_method.h"
 #include "util/stack_util.h"
 
 namespace doris {

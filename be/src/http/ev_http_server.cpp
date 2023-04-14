@@ -17,25 +17,35 @@
 
 #include "http/ev_http_server.h"
 
+#include <bthread/errno.h>
+#include <butil/endpoint.h>
+#include <butil/fd_utility.h>
 #include <event2/buffer.h>
 #include <event2/bufferevent.h>
 #include <event2/event.h>
 #include <event2/http.h>
 #include <event2/http_struct.h>
-#include <event2/keyvalq_struct.h>
 #include <event2/thread.h>
+#include <glog/logging.h>
+#include <netinet/in.h>
+#include <string.h>
+#include <sys/socket.h>
+#include <unistd.h>
 
 #include <memory>
+#include <mutex>
 #include <sstream>
+#include <string>
 
-#include "common/logging.h"
+#include "common/status.h"
 #include "http/http_channel.h"
 #include "http/http_handler.h"
 #include "http/http_headers.h"
+#include "http/http_method.h"
 #include "http/http_request.h"
-#include "runtime/thread_context.h"
-#include "service/brpc.h"
-#include "util/debug_util.h"
+#include "http/http_status.h"
+#include "service/backend_options.h"
+#include "util/path_trie.hpp"
 #include "util/threadpool.h"
 
 namespace doris {

@@ -17,6 +17,10 @@
 
 #include "http/http_response.h"
 
+#include <string>
+
+#include "http/http_status.h"
+
 namespace doris {
 
 static std::string s_text_content_type = "text/plain; charset=UTF-8";

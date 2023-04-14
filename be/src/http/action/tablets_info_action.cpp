@@ -17,15 +17,26 @@
 
 #include "http/action/tablets_info_action.h"
 
-#include <string>
+#include <ctype.h>
+#include <stdint.h>
 
+#include <algorithm>
+#include <cstdint>
+#include <cstdlib>
+#include <limits>
+#include <string>
+#include <vector>
+
+#include "gutil/stringprintf.h"
 #include "http/http_channel.h"
 #include "http/http_headers.h"
 #include "http/http_request.h"
 #include "http/http_status.h"
+#include "olap/olap_common.h"
 #include "olap/storage_engine.h"
 #include "olap/tablet_manager.h"
 #include "service/backend_options.h"
+#include "util/easy_json.h"
 
 namespace doris {
 

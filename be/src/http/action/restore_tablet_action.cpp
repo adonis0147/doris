@@ -17,24 +17,30 @@
 
 #include "http/action/restore_tablet_action.h"
 
-#include <unistd.h>
+#include <fmt/core.h>
+#include <gen_cpp/AgentService_types.h>
+#include <glog/logging.h>
+#include <stdint.h>
 
-#include <sstream>
+#include <cstdlib>
+#include <filesystem>
+#include <mutex>
 #include <string>
+#include <vector>
 
-#include "gutil/strings/substitute.h" // for Substitute
+#include "common/status.h"
 #include "http/http_channel.h"
-#include "http/http_headers.h"
 #include "http/http_request.h"
-#include "http/http_response.h"
 #include "http/http_status.h"
+#include "io/fs/file_system.h"
+#include "io/fs/local_file_system.h"
+#include "io/fs/path.h"
 #include "olap/data_dir.h"
-#include "olap/olap_define.h"
 #include "olap/storage_engine.h"
+#include "olap/tablet.h"
 #include "olap/tablet_meta.h"
 #include "olap/utils.h"
 #include "runtime/exec_env.h"
-#include "util/json_util.h"
 
 using std::filesystem::path;
 

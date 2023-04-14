@@ -17,7 +17,8 @@
 
 #pragma once
 
-#include <cstdint>
+#include <wchar.h>
+
 #include <string>
 
 #include "http/http_status.h"

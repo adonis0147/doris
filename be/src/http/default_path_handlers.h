@@ -17,10 +17,6 @@
 
 #pragma once
 
-#include <stdio.h>
-
-#include <memory>
-
 namespace doris {
 
 class MemTracker;

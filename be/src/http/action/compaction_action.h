@@ -17,6 +17,10 @@
 
 #pragma once
 
+#include <stdint.h>
+
+#include <string>
+
 #include "common/status.h"
 #include "http/http_handler.h"
 #include "olap/tablet.h"

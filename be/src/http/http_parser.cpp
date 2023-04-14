@@ -17,6 +17,10 @@
 
 #include "http/http_parser.h"
 
+#include <stdint.h>
+
+#include <ostream>
+
 namespace doris {
 
 std::ostream& operator<<(std::ostream& os, const HttpChunkParseCtx& ctx) {

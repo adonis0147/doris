@@ -17,10 +17,18 @@
 
 #pragma once
 
+#include <stdint.h>
+
+#include <deque>
+#include <map>
+#include <memory>
+#include <mutex>
+#include <sstream>
 #include <string>
+#include <utility>
 
 #include "common/status.h"
-#include "gen_cpp/Status_types.h"
+#include "gutil/stringprintf.h"
 #include "http/http_handler.h"
 #include "olap/data_dir.h"
 #include "olap/tablet.h"

@@ -17,6 +17,8 @@
 
 #pragma once
 
+#include <string>
+
 #include "common/status.h"
 #include "http/http_handler.h"
 

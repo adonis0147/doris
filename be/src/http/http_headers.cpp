@@ -17,6 +17,8 @@
 
 #include "http/http_headers.h"
 
+#include <string>
+
 namespace doris {
 
 const char* HttpHeaders::ACCEPT = "Accept";
