@@ -17,9 +17,11 @@
 
 #include "exec/schema_scanner/schema_helper.h"
 
-#include <sstream>
-#include <thread>
+#include <stdint.h>
 
+#include <string>
+
+#include "common/status.h"
 #include "gen_cpp/FrontendService.h"
 #include "gen_cpp/FrontendService_types.h"
 #include "runtime/client_cache.h"

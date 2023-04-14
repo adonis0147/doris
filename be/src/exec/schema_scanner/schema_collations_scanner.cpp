@@ -17,9 +17,19 @@
 
 #include "exec/schema_scanner/schema_collations_scanner.h"
 
+#include <gen_cpp/Descriptors_types.h>
+#include <stdint.h>
+#include <string.h>
+
+#include <vector>
+
 #include "common/status.h"
+#include "exec/schema_scanner.h"
+#include "runtime/define_primitive_type.h"
 #include "runtime/primitive_type.h"
+#include "util/runtime_profile.h"
 #include "vec/common/string_ref.h"
+#include "vec/core/block.h"
 
 namespace doris {
 

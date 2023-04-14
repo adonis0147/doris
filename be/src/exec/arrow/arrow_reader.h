@@ -17,26 +17,29 @@
 
 #pragma once
 
-#include <arrow/api.h>
+#include <arrow/array/array_primitive.h>
 #include <arrow/buffer.h>
-#include <arrow/io/api.h>
 #include <arrow/io/file.h>
 #include <arrow/io/interfaces.h>
-#include <parquet/api/reader.h>
-#include <parquet/api/writer.h>
+#include <arrow/result.h>
 #include <parquet/arrow/reader.h>
-#include <parquet/arrow/writer.h>
-#include <parquet/exception.h>
 #include <stdint.h>
+#include <wchar.h>
 
+#include <atomic>
+#include <condition_variable>
+#include <list>
 #include <map>
+#include <memory>
+#include <mutex>
 #include <string>
+#include <thread>
+#include <vector>
 
+#include "common/config.h"
 #include "common/status.h"
-#include "gen_cpp/PaloBrokerService_types.h"
-#include "gen_cpp/PlanNodes_types.h"
-#include "gen_cpp/Types_types.h"
-#include "io/fs/file_reader.h"
+#include "io/fs/file_reader_writer_fwd.h"
+#include "runtime/descriptors.h"
 #include "vec/exec/format/generic_reader.h"
 
 namespace doris {

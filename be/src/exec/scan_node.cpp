@@ -20,6 +20,16 @@
 
 #include "exec/scan_node.h"
 
+#include <gen_cpp/Metrics_types.h>
+
+#include <functional>
+#include <string>
+
+#include "common/status.h"
+#include "exec/exec_node.h"
+#include "runtime/runtime_state.h"
+#include "util/runtime_profile.h"
+#include "vec/exprs/vexpr.h"
 #include "vec/utils/util.hpp"
 
 namespace doris {

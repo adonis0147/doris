@@ -15,8 +15,6 @@
 // specific language governing permissions and limitations
 // under the License.
 
-#include "exec/decompressor.h"
-
 namespace doris {
 
 #ifdef DORIS_WITH_LZO

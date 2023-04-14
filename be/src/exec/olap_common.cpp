@@ -17,13 +17,10 @@
 
 #include "exec/olap_common.h"
 
-#include <boost/lexical_cast.hpp>
-#include <set>
-#include <sstream>
-#include <string>
-#include <utility>
+#include <memory>
 #include <vector>
 
+#include "common/status.h"
 #include "exec/olap_utils.h"
 
 namespace doris {

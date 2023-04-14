@@ -20,18 +20,35 @@
 
 #include "exec/exec_node.h"
 
+#include <gen_cpp/Metrics_types.h>
+#include <gen_cpp/PlanNodes_types.h>
+#include <glog/logging.h>
+#include <opentelemetry/common/threadlocal.h>
+#include <stdint.h>
 #include <thrift/protocol/TDebugProtocol.h>
-#include <unistd.h>
 
+#include <atomic>
+#include <functional>
+#include <map>
+#include <memory>
+#include <mutex>
 #include <sstream>
+#include <string>
+#include <vector>
 
+#include "common/config.h"
+#include "common/logging.h"
 #include "common/object_pool.h"
 #include "common/status.h"
+#include "exec/scan_node.h"
 #include "runtime/descriptors.h"
 #include "runtime/memory/mem_tracker.h"
+#include "runtime/query_statistics.h"
 #include "runtime/runtime_state.h"
 #include "util/debug_util.h"
 #include "util/runtime_profile.h"
+#include "util/uid_util.h"
+#include "vec/columns/column_nullable.h"
 #include "vec/core/block.h"
 #include "vec/exec/join/vhash_join_node.h"
 #include "vec/exec/join/vnested_loop_join_node.h"
@@ -41,6 +58,7 @@
 #include "vec/exec/scan/new_odbc_scan_node.h"
 #include "vec/exec/scan/new_olap_scan_node.h"
 #include "vec/exec/scan/vmeta_scan_node.h"
+#include "vec/exec/scan/vscan_node.h"
 #include "vec/exec/vaggregation_node.h"
 #include "vec/exec/vanalytic_eval_node.h"
 #include "vec/exec/vassert_num_rows_node.h"
@@ -56,6 +74,7 @@
 #include "vec/exec/vtable_function_node.h"
 #include "vec/exec/vunion_node.h"
 #include "vec/exprs/vexpr.h"
+#include "vec/utils/util.hpp"
 
 namespace doris {
 

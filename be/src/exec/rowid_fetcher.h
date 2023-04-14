@@ -17,7 +17,12 @@
 
 #pragma once
 
+#include <memory>
+#include <vector>
+
 #include "gen_cpp/internal_service.pb.h"
+#include "vec/columns/column.h"
+#include "vec/columns/column_string.h"
 #include "vec/core/block.h"
 
 namespace doris {

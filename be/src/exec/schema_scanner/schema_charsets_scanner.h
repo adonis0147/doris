@@ -19,6 +19,9 @@
 
 #include <stdint.h>
 
+#include <vector>
+
+#include "common/status.h"
 #include "exec/schema_scanner.h"
 
 namespace doris {

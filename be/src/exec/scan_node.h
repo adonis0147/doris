@@ -20,10 +20,16 @@
 
 #pragma once
 
-#include <string>
+#include <gen_cpp/PlanNodes_types.h>
 
+#include <functional>
+#include <string>
+#include <vector>
+
+#include "common/status.h"
 #include "exec/exec_node.h"
 #include "gen_cpp/PaloInternalService_types.h"
+#include "runtime/descriptors.h"
 #include "util/runtime_profile.h"
 
 namespace doris {

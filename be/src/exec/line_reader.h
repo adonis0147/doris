@@ -17,6 +17,9 @@
 
 #pragma once
 
+#include <stdint.h>
+#include <stdio.h>
+
 #include "common/status.h"
 
 namespace doris {

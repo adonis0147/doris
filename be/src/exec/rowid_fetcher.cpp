@@ -17,14 +17,32 @@
 
 #include "exec/rowid_fetcher.h"
 
+#include <brpc/callback.h>
+#include <brpc/controller.h>
+#include <fmt/core.h>
+#include <glog/logging.h>
+#include <stdint.h>
+#include <wchar.h>
+
+#include <string>
+#include <unordered_map>
+#include <vector>
+
 #include "bthread/countdown_event.h"
+#include "common/config.h"
+#include "common/status.h"
 #include "exec/tablet_info.h" // DorisNodesInfo
-#include "gen_cpp/Types_types.h"
 #include "gen_cpp/internal_service.pb.h"
+#include "olap/utils.h"
 #include "runtime/exec_env.h"       // ExecEnv
 #include "runtime/runtime_state.h"  // RuntimeState
 #include "util/brpc_client_cache.h" // BrpcClientCache
 #include "util/defer_op.h"
+#include "vec/columns/column.h"
+#include "vec/columns/column_nullable.h"
+#include "vec/columns/column_string.h"
+#include "vec/common/assert_cast.h"
+#include "vec/common/string_ref.h"
 #include "vec/core/block.h" // Block
 
 namespace doris {

@@ -17,12 +17,26 @@
 
 #include "exec/odbc_connector.h"
 
+#include <fmt/core.h>
+#include <fmt/format.h>
+#include <glog/logging.h>
+#include <sql.h>
 #include <sqlext.h>
+#include <sqltypes.h>
+#include <sqlucode.h>
+#include <stdint.h>
+#include <stdlib.h>
+#include <wchar.h>
 
-#include <codecvt>
+#include <sstream>
+#include <string>
 
-#include "runtime/primitive_type.h"
-#include "util/types.h"
+#include "common/config.h"
+#include "common/status.h"
+#include "exec/table_connector.h"
+#include "runtime/define_primitive_type.h"
+#include "runtime/runtime_state.h"
+#include "util/runtime_profile.h"
 
 #define ODBC_DISPOSE(h, ht, x, op)                                                        \
     {                                                                                     \

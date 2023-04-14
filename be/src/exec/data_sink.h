@@ -20,6 +20,11 @@
 
 #pragma once
 
+#include <gen_cpp/PaloInternalService_types.h>
+#include <stdio.h>
+
+#include <memory>
+#include <string>
 #include <vector>
 
 #include "common/status.h"

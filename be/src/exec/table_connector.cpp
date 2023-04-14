@@ -17,20 +17,38 @@
 
 #include "exec/table_connector.h"
 
+#include <bthread/errno.h>
 #include <fmt/core.h>
+#include <fmt/format.h>
+#include <gen_cpp/Metrics_types.h>
 #include <gen_cpp/Types_types.h>
 #include <glog/logging.h>
 #include <iconv.h>
+#include <stdint.h>
+#include <stdlib.h>
 
+#include <memory>
+#include <string>
+#include <string_view>
+#include <type_traits>
+#include <vector>
+
+#include "common/status.h"
 #include "runtime/define_primitive_type.h"
 #include "runtime/primitive_type.h"
-#include "util/mysql_global.h"
+#include "runtime/types.h"
+#include "util/binary_cast.hpp"
+#include "util/runtime_profile.h"
 #include "vec/columns/column_array.h"
+#include "vec/columns/column_nullable.h"
+#include "vec/common/assert_cast.h"
 #include "vec/core/block.h"
 #include "vec/data_types/data_type.h"
 #include "vec/data_types/data_type_array.h"
+#include "vec/data_types/data_type_nullable.h"
 #include "vec/exprs/vexpr.h"
 #include "vec/exprs/vexpr_context.h"
+#include "vec/runtime/vdatetime_value.h"
 
 namespace doris {
 

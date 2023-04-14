@@ -17,12 +17,31 @@
 
 #include "vec/exec/varrow_scanner.h"
 
-#include "exec/arrow/parquet_reader.h"
+#include <arrow/record_batch.h>
+#include <gen_cpp/Exprs_types.h>
+#include <gen_cpp/Metrics_types.h>
+#include <gen_cpp/PlanNodes_types.h>
+#include <glog/logging.h>
+#include <stdint.h>
+#include <wchar.h>
+
+#include <memory>
+#include <vector>
+
+#include "common/status.h"
+#include "exec/arrow/arrow_reader.h"
+#include "exec/base_scanner.h"
 #include "io/file_factory.h"
-#include "olap/iterators.h"
+#include "io/fs/file_reader_options.h"
+#include "io/fs/file_reader_writer_fwd.h"
 #include "runtime/descriptors.h"
-#include "runtime/exec_env.h"
+#include "util/runtime_profile.h"
+#include "vec/aggregate_functions/aggregate_function.h"
+#include "vec/core/block.h"
+#include "vec/core/columns_with_type_and_name.h"
 #include "vec/data_types/data_type_factory.hpp"
+#include "vec/data_types/data_type_nullable.h"
+#include "vec/data_types/data_type_string.h"
 #include "vec/functions/simple_function_factory.h"
 #include "vec/utils/arrow_column_to_doris_column.h"
 

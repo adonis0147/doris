@@ -17,14 +17,24 @@
 
 #include "exec/schema_scanner/schema_columns_scanner.h"
 
-#include <cstddef>
-#include <cstdint>
-#include <memory>
-#include <sstream>
+#include <fmt/core.h>
+#include <fmt/format.h>
+#include <gen_cpp/Descriptors_types.h>
+#include <gen_cpp/FrontendService_types.h>
+#include <gen_cpp/Types_types.h>
+#include <stdint.h>
 
+#include <string>
+#include <vector>
+
+#include "common/status.h"
+#include "exec/schema_scanner.h"
 #include "exec/schema_scanner/schema_helper.h"
+#include "runtime/define_primitive_type.h"
 #include "runtime/primitive_type.h"
+#include "util/runtime_profile.h"
 #include "vec/common/string_ref.h"
+#include "vec/core/block.h"
 
 namespace doris {
 

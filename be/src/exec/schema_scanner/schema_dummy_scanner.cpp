@@ -17,6 +17,12 @@
 
 #include "schema_dummy_scanner.h"
 
+#include <vector>
+
+#include "common/status.h"
+#include "exec/schema_scanner.h"
+#include "vec/core/block.h"
+
 namespace {
 std::vector<doris::SchemaScanner::ColumnDesc> DUMMY_COLUMN;
 }

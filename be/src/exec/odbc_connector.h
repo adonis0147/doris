@@ -16,10 +16,21 @@
 // under the License.
 
 #pragma once
+#include <fmt/format.h>
 #include <sqltypes.h>
+#include <stdint.h>
+#include <stdlib.h>
 
+#include <memory>
+#include <string>
+#include <vector>
+
+#include "common/config.h"
 #include "common/status.h"
 #include "exec/table_connector.h"
+#include "runtime/descriptors.h"
+#include "runtime/runtime_state.h"
+#include "util/runtime_profile.h"
 
 namespace doris {
 struct ODBCConnectorParam {

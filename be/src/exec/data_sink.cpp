@@ -20,16 +20,23 @@
 
 #include "exec/data_sink.h"
 
+#include <gen_cpp/DataSinks_types.h>
+#include <gen_cpp/Exprs_types.h>
+#include <glog/logging.h>
+#include <stdio.h>
+
 #include <map>
 #include <memory>
-#include <string>
+#include <sstream>
+#include <vector>
 
+#include "common/config.h"
+#include "common/status.h"
 #include "gen_cpp/PaloInternalService_types.h"
 #include "runtime/runtime_state.h"
 #include "vec/sink/vdata_stream_sender.h"
 #include "vec/sink/vjdbc_table_sink.h"
 #include "vec/sink/vmemory_scratch_sink.h"
-#include "vec/sink/vmysql_table_sink.h"
 #include "vec/sink/vodbc_table_sink.h"
 #include "vec/sink/vresult_file_sink.h"
 #include "vec/sink/vresult_sink.h"

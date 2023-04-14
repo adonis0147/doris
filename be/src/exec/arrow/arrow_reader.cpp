@@ -16,22 +16,30 @@
 // under the License.
 #include "exec/arrow/arrow_reader.h"
 
-#include <arrow/array.h>
+#include <arrow/array/array_primitive.h>
+#include <arrow/buffer.h>
+#include <arrow/record_batch.h>
+#include <arrow/result.h>
 #include <arrow/status.h>
-#include <time.h>
+#include <glog/logging.h>
+#include <opentelemetry/common/threadlocal.h>
+#include <stdint.h>
+#include <wchar.h>
 
-#include "common/logging.h"
-#include "gen_cpp/PaloBrokerService_types.h"
-#include "gen_cpp/TPaloBrokerService.h"
-#include "io/io_common.h"
-#include "olap/iterators.h"
-#include "runtime/broker_mgr.h"
-#include "runtime/client_cache.h"
+#include <algorithm>
+#include <chrono>
+#include <memory>
+#include <mutex>
+#include <sstream>
+#include <string>
+#include <vector>
+
+#include "common/status.h"
+#include "io/fs/file_reader_writer_fwd.h"
 #include "runtime/descriptors.h"
-#include "runtime/exec_env.h"
 #include "runtime/runtime_state.h"
+#include "util/slice.h"
 #include "util/string_util.h"
-#include "util/thrift_util.h"
 #include "vec/core/block.h"
 #include "vec/utils/arrow_column_to_doris_column.h"
 

@@ -17,9 +17,11 @@
 
 #pragma once
 
-#include <map>
-#include <string>
+#include <gen_cpp/Types_types.h>
 
+#include <vector>
+
+#include "common/status.h"
 #include "exec/schema_scanner.h"
 #include "gen_cpp/FrontendService_types.h"
 

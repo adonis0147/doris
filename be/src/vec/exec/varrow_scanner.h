@@ -17,14 +17,14 @@
 
 #pragma once
 
-#include <arrow/array.h>
+#include <arrow/array/array_primitive.h>
 #include <exec/arrow/arrow_reader.h>
+#include <gen_cpp/Exprs_types.h>
+#include <gen_cpp/PlanNodes_types.h>
+#include <stdint.h>
+#include <wchar.h>
 
-#include <map>
 #include <memory>
-#include <sstream>
-#include <string>
-#include <unordered_map>
 #include <vector>
 
 #include "common/status.h"
@@ -32,7 +32,9 @@
 #include "exec/base_scanner.h"
 #include "gen_cpp/Types_types.h"
 #include "io/file_factory.h"
+#include "io/fs/file_reader_writer_fwd.h"
 #include "util/runtime_profile.h"
+#include "vec/core/block.h"
 
 namespace doris::vectorized {
 

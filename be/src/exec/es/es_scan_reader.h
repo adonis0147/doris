@@ -17,6 +17,8 @@
 
 #pragma once
 
+#include <map>
+#include <memory>
 #include <string>
 
 #include "exec/es/es_scroll_parser.h"

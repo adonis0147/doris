@@ -17,11 +17,24 @@
 
 #include "exec/schema_scanner/schema_tables_scanner.h"
 
+#include <gen_cpp/Descriptors_types.h>
+#include <gen_cpp/FrontendService_types.h>
+#include <stdint.h>
+
+#include <string>
+#include <vector>
+
 #include "common/status.h"
+#include "exec/schema_scanner.h"
 #include "exec/schema_scanner/schema_helper.h"
+#include "olap/olap_common.h"
+#include "runtime/define_primitive_type.h"
 #include "runtime/primitive_type.h"
-#include "vec/columns/column_complex.h"
+#include "util/runtime_profile.h"
+#include "util/timezone_utils.h"
 #include "vec/common/string_ref.h"
+#include "vec/core/block.h"
+#include "vec/runtime/vdatetime_value.h"
 
 namespace doris {
 

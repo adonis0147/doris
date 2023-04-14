@@ -17,14 +17,44 @@
 
 #include "base_scanner.h"
 
+#include <assert.h>
 #include <fmt/format.h>
+#include <gen_cpp/Descriptors_types.h>
+#include <gen_cpp/Exprs_types.h>
+#include <gen_cpp/Metrics_types.h>
+#include <gen_cpp/PlanNodes_types.h>
+#include <gen_cpp/Types_types.h>
+#include <glog/logging.h>
+#include <opentelemetry/common/threadlocal.h>
+#include <stdio.h>
+
+#include <iterator>
+#include <map>
+#include <memory>
+#include <string>
+#include <unordered_map>
+#include <vector>
 
 #include "common/consts.h"
-#include "common/utils.h"
+#include "common/global_types.h"
+#include "common/status.h"
 #include "exec/exec_node.h"
+#include "gutil/casts.h"
+#include "runtime/define_primitive_type.h"
 #include "runtime/descriptors.h"
 #include "runtime/runtime_state.h"
+#include "util/runtime_profile.h"
+#include "util/slice.h"
+#include "vec/columns/column.h"
+#include "vec/columns/column_nullable.h"
+#include "vec/columns/columns_number.h"
+#include "vec/common/cow.h"
+#include "vec/common/schema_util.h"
+#include "vec/core/block.h"
 #include "vec/data_types/data_type_factory.hpp"
+#include "vec/data_types/data_type_number.h"
+#include "vec/exprs/vexpr.h"
+#include "vec/exprs/vexpr_context.h"
 
 namespace doris {
 

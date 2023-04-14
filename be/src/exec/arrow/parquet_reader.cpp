@@ -16,21 +16,30 @@
 // under the License.
 #include "exec/arrow/parquet_reader.h"
 
-#include <arrow/array.h>
+#include <arrow/record_batch.h>
 #include <arrow/status.h>
 #include <arrow/type_fwd.h>
-#include <time.h>
+#include <glog/logging.h>
+#include <opentelemetry/common/threadlocal.h>
+#include <parquet/arrow/reader.h>
+#include <parquet/exception.h>
+#include <parquet/properties.h>
+#include <stdint.h>
 
-#include <algorithm>
-#include <cinttypes>
+#include <chrono>
+#include <memory>
 #include <mutex>
+#include <sstream>
+#include <string>
 #include <thread>
+#include <vector>
 
 #include "common/logging.h"
 #include "common/status.h"
+#include "exec/arrow/arrow_reader.h"
+#include "io/fs/file_reader_writer_fwd.h"
 #include "runtime/descriptors.h"
 #include "util/string_util.h"
-#include "vec/common/string_ref.h"
 
 namespace doris {
 

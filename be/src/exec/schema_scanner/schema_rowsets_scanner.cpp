@@ -17,19 +17,28 @@
 
 #include "exec/schema_scanner/schema_rowsets_scanner.h"
 
+#include <gen_cpp/Descriptors_types.h>
+#include <stdint.h>
+
+#include <algorithm>
 #include <cstddef>
+#include <shared_mutex>
+#include <string>
+#include <utility>
+#include <vector>
 
 #include "common/status.h"
-#include "gutil/integral_types.h"
-#include "olap/rowset/beta_rowset.h"
+#include "exec/schema_scanner.h"
+#include "olap/olap_common.h"
 #include "olap/rowset/rowset.h"
-#include "olap/rowset/segment_v2/segment.h"
-#include "olap/segment_loader.h"
 #include "olap/storage_engine.h"
 #include "olap/tablet.h"
+#include "runtime/define_primitive_type.h"
 #include "runtime/descriptors.h"
 #include "runtime/primitive_type.h"
+#include "util/runtime_profile.h"
 #include "vec/common/string_ref.h"
+#include "vec/core/block.h"
 namespace doris {
 std::vector<SchemaScanner::ColumnDesc> SchemaRowsetsScanner::_s_tbls_columns = {
         //   name,       type,          size,     is_null

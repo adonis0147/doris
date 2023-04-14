@@ -17,7 +17,18 @@
 
 #include "exec/decompressor.h"
 
+#include <bzlib.h>
+#include <glog/logging.h>
+#include <stdint.h>
+#include <stdio.h>
+#include <strings.h>
+#include <zlib.h>
+
+#include <sstream>
+#include <string>
+
 #include "common/logging.h"
+#include "common/status.h"
 
 namespace doris {
 

@@ -17,19 +17,25 @@
 
 #pragma once
 
+#include <glog/logging.h>
+#include <opentelemetry/common/threadlocal.h>
 #include <sql.h>
+#include <stdint.h>
+#include <unistd.h>
 
-#include <boost/algorithm/string.hpp>
-
-#include "runtime/datetime_value.h"
+#include "olap/hll.h"
 #include "runtime/decimalv2_value.h"
+#include "runtime/define_primitive_type.h"
 #include "runtime/descriptors.h"
 #include "text_converter.h"
-#include "util/binary_cast.hpp"
+#include "util/slice.h"
 #include "util/string_parser.hpp"
-#include "util/types.h"
+#include "vec/columns/column.h"
 #include "vec/columns/column_complex.h"
 #include "vec/columns/column_nullable.h"
+#include "vec/columns/column_string.h"
+#include "vec/columns/column_vector.h"
+#include "vec/core/types.h"
 #include "vec/runtime/vdatetime_value.h"
 
 namespace doris {

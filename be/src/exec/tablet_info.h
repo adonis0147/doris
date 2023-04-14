@@ -17,10 +17,16 @@
 
 #pragma once
 
-#include <cstdint>
+#include <gen_cpp/Exprs_types.h>
+#include <stdint.h>
+
+#include <functional>
+#include <iterator>
 #include <map>
 #include <memory>
+#include <string>
 #include <unordered_map>
+#include <utility>
 #include <vector>
 
 #include "common/object_pool.h"
@@ -29,6 +35,7 @@
 #include "gen_cpp/descriptors.pb.h"
 #include "olap/tablet_schema.h"
 #include "runtime/descriptors.h"
+#include "runtime/memory/mem_tracker.h"
 #include "vec/core/block.h"
 #include "vec/exprs/vexpr_context.h"
 

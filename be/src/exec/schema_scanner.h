@@ -17,12 +17,18 @@
 
 #pragma once
 
+#include <stdint.h>
+#include <wchar.h>
+
+#include <memory>
 #include <string>
+#include <vector>
 
 #include "common/object_pool.h"
 #include "common/status.h"
 #include "gen_cpp/Descriptors_types.h"
 #include "gen_cpp/Types_types.h"
+#include "runtime/define_primitive_type.h"
 #include "util/runtime_profile.h"
 #include "vec/core/block.h"
 

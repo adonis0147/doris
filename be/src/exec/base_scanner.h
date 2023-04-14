@@ -17,9 +17,23 @@
 
 #pragma once
 
+#include <gen_cpp/Exprs_types.h>
+#include <gen_cpp/PlanNodes_types.h>
+#include <gen_cpp/Types_types.h>
+#include <stdint.h>
+
+#include <memory>
+#include <unordered_map>
+#include <vector>
+
+#include "common/global_types.h"
 #include "common/status.h"
+#include "runtime/descriptors.h"
 #include "util/runtime_profile.h"
+#include "util/slice.h"
+#include "vec/common/cow.h"
 #include "vec/common/schema_util.h"
+#include "vec/core/block.h"
 #include "vec/exprs/vexpr.h"
 #include "vec/exprs/vexpr_context.h"
 

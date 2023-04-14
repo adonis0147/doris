@@ -17,9 +17,20 @@
 
 #include "exec/schema_scanner/schema_schema_privileges_scanner.h"
 
+#include <gen_cpp/Descriptors_types.h>
+#include <gen_cpp/FrontendService_types.h>
+
+#include <string>
+#include <vector>
+
+#include "common/status.h"
+#include "exec/schema_scanner.h"
 #include "exec/schema_scanner/schema_helper.h"
+#include "runtime/define_primitive_type.h"
 #include "runtime/primitive_type.h"
+#include "util/runtime_profile.h"
 #include "vec/common/string_ref.h"
+#include "vec/core/block.h"
 
 namespace doris {
 

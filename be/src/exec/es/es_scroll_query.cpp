@@ -17,7 +17,13 @@
 
 #include "exec/es/es_scroll_query.h"
 
-#include <sstream>
+#include <glog/logging.h>
+#include <rapidjson/rapidjson.h>
+#include <stdlib.h>
+
+#include <map>
+#include <string>
+#include <vector>
 
 #include "exec/es/es_scan_reader.h"
 #include "rapidjson/document.h"

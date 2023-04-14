@@ -17,10 +17,15 @@
 
 #pragma once
 
+#include <rapidjson/rapidjson.h>
+
+#include <map>
 #include <string>
+#include <vector>
 
 #include "rapidjson/document.h"
 #include "runtime/descriptors.h"
+#include "vec/columns/column.h"
 #include "vec/core/block.h"
 
 namespace doris {

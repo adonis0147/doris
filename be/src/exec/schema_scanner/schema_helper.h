@@ -17,6 +17,10 @@
 
 #pragma once
 
+#include <stdint.h>
+
+#include <string>
+
 #include "common/status.h"
 #include "gen_cpp/FrontendService_types.h"
 

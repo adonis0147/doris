@@ -17,8 +17,20 @@
 
 #include "exec/schema_scanner.h"
 
-#include <cstddef>
+#include <gen_cpp/Descriptors_types.h>
+#include <gen_cpp/Types_types.h>
+#include <glog/logging.h>
+#include <stdint.h>
+#include <string.h>
+#include <wchar.h>
 
+#include <new>
+#include <sstream>
+#include <string>
+#include <vector>
+
+#include "common/object_pool.h"
+#include "common/status.h"
 #include "exec/schema_scanner/schema_charsets_scanner.h"
 #include "exec/schema_scanner/schema_collations_scanner.h"
 #include "exec/schema_scanner/schema_columns_scanner.h"
@@ -33,11 +45,19 @@
 #include "exec/schema_scanner/schema_user_privileges_scanner.h"
 #include "exec/schema_scanner/schema_variables_scanner.h"
 #include "exec/schema_scanner/schema_views_scanner.h"
+#include "olap/hll.h"
 #include "runtime/define_primitive_type.h"
-#include "util/encryption_util.h"
+#include "util/runtime_profile.h"
+#include "util/types.h"
 #include "vec/columns/column.h"
+#include "vec/columns/column_complex.h"
+#include "vec/columns/column_nullable.h"
+#include "vec/columns/column_string.h"
+#include "vec/columns/column_vector.h"
+#include "vec/columns/columns_number.h"
 #include "vec/common/string_ref.h"
 #include "vec/core/block.h"
+#include "vec/core/types.h"
 
 namespace doris {
 

@@ -16,9 +16,10 @@
 // under the License.
 #pragma once
 
-#include <memory>
+#include <string>
 
 #include "udf/udf.h"
+#include "vec/common/string_ref.h"
 
 namespace doris {
 
